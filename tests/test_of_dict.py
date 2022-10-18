@@ -1,7 +1,6 @@
 from ultimate_pyfoam.domain.of_dict import OfDict
 
 
-
 def test_can_be_created():
     OfDict(name="FoamFile", content={})
 
@@ -16,7 +15,7 @@ def test_str_can_be_used():
 
 
 def test_str():
-    output = str(OfDict(name="FoamFile", content={"version":2.0}))
+    output = str(OfDict(name="FoamFile", content={"version": 2.0}))
     string = """\
 FoamFile
 {
@@ -27,7 +26,7 @@ FoamFile
 
 
 def test_multiple_data_entries():
-    output = str(OfDict(name="FoamFile", content={"version":[2.0, 3.0]}))
+    output = str(OfDict(name="FoamFile", content={"version": [2.0, 3.0]}))
     string = """\
 FoamFile
 {
@@ -38,7 +37,7 @@ FoamFile
 
 
 def test_nested_of_dict():
-    #TODO :how do we want to use nested dicts?
+    # TODO :how do we want to use nested dicts?
     string = """\
 solvers
 {

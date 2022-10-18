@@ -1,9 +1,16 @@
+"""
+asofnoefn
+"""
 from dataclasses import dataclass
 from typing import Mapping
 
 
 @dataclass()
-class OfDict():
+class OfDict:
+    """
+    Neco sem napises.
+    """
+
     name: str
     content: Mapping
 
@@ -16,3 +23,7 @@ class OfDict():
 
         string += "\n}"
         return string
+
+
+def fce():
+    pass
