@@ -3,7 +3,6 @@ from collections.abc import Mapping
 from ultimate_pyfoam.domain.of_dict import OfDict
 from pathlib import Path
 
-
 @dataclass()
 class Dumper:
     content: Mapping
