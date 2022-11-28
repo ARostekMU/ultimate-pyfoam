@@ -29,7 +29,6 @@ def dump(case_file: Path, dump_dir: str) -> None:
     sys.path.insert(0, str(Path(case_file).parent))
     import importlib
 
-    click.echo(case_file)
     module = importlib.import_module(Path(case_file).stem)
     case_var_name = "case"
     case = getattr(module, case_var_name)
