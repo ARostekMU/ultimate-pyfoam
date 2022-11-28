@@ -13,14 +13,14 @@ dummy_case = {Path("dummyFile"): {"dummyKey": "dummyValue"}}
 
 def test_dump_dummy(tmp_path: Path) -> None:
     cd = CaseDumper(case=dummy_case)
-    cd.dump(case_dir=tmp_path)
+    cd.dump(dump_dir=tmp_path)
 
     assert (tmp_path / "dummyFile").exists()
 
 
 def test_dumped_content_is_correct(tmp_path: Path) -> None:
     cd = CaseDumper(case=dummy_case)
-    cd.dump(case_dir=tmp_path)
+    cd.dump(dump_dir=tmp_path)
 
     written_string = Path(tmp_path / "dummyFile").read_text().strip()
     string = "dummyKey dummyValue;"
@@ -37,7 +37,7 @@ multidir_case = {
 
 def test_dump_mutliple_directories(tmp_path: Path) -> None:
     cd = CaseDumper(case=multidir_case)
-    cd.dump(case_dir=tmp_path)
+    cd.dump(dump_dir=tmp_path)
 
     assert (tmp_path / "a").exists()
     assert (tmp_path / "b").exists()
@@ -55,7 +55,7 @@ realistic_case = {
 
 def test_dump_realistic_case(tmp_path: Path) -> None:
     cd = CaseDumper(case=realistic_case)  # type: ignore        # TODO
-    cd.dump(case_dir=tmp_path)
+    cd.dump(dump_dir=tmp_path)
 
     assert (tmp_path / "0" / "U").exists()
     assert (

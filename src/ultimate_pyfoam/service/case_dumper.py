@@ -10,6 +10,6 @@ from ultimate_pyfoam.service.dumper import Dumper
 class CaseDumper:
     case: Mapping[Path, Mapping[str, Any]]
 
-    def dump(self, case_dir: Path) -> None:
+    def dump(self, dump_dir: Path) -> None:
         for rel_file_path, file_content in self.case.items():
-            Dumper(content=file_content).write(case_dir / rel_file_path)
+            Dumper(content=file_content).write(dump_dir / rel_file_path)
