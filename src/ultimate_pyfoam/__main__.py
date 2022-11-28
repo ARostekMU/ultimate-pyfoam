@@ -18,7 +18,7 @@ def main() -> None:
 @click.argument("input_file", type=Path, default="case.py")
 @click.argument("output_dir", type=Path, default="of_case")
 def dump(input_file: Path, output_dir: Path) -> None:
-    sys.path.append(".")
+    sys.path.append(str(input_file.parent))
 
     case = import_module(input_file.stem)
     case_dumper = CaseDumper(case.case)
