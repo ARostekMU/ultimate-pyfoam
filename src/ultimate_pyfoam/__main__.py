@@ -35,6 +35,8 @@ def dump(case_file: Path, dump_dir: str) -> None:
 
     CaseDumper(case=case).dump(dump_dir=Path(dump_dir))
 
+    sys.path.remove(str(Path(case_file).parent))
+
 
 main.add_command(dump)
 
