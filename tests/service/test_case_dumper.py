@@ -51,3 +51,36 @@ realistic_case = {
     Path("constant/turbulenceProperties"): {"simulationType": "laminar"},
     Path("system/fvSchemes"): {"fluxScheme": "Kurganov"},
 }
+
+
+def test_dump_realistic_case(tmp_path: Path) -> None:
+    cd = CaseDumper(case=realistic_case)  # type: ignore        # TODO
+    cd.dump(case_dir=tmp_path)
+
+    assert (tmp_path / "0" / "U").exists()
+    assert (
+        Path(tmp_path / "0" / "U").read_text().strip() == "dimensions [0 1 -1 0 0 0 0];"
+    )
+
+    assert (tmp_path / "constant" / "thermophysicalProperties").exists()
+    assert (
+        Path(tmp_path / "constant" / "thermophysicalProperties").read_text()
+        == """\
+thermoType
+{
+    type hePsiThermo;
+}
+"""
+    )
+
+    assert (tmp_path / "constant" / "turbulenceProperties").exists()
+    assert (
+        Path(tmp_path / "constant" / "turbulenceProperties").read_text().strip()
+        == "simulationType laminar;"
+    )
+
+    assert (tmp_path / "system" / "fvSchemes").exists()
+    assert (
+        Path(tmp_path / "system" / "fvSchemes").read_text().strip()
+        == "fluxScheme Kurganov;"
+    )
